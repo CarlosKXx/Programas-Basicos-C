@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main(void)
+{
+	int mat;
+    float v1,v2,v3;
+    float med,bonus;
+    
+    printf("Digite a matrícula do vendedor: \n");
+    scanf("%i", &mat);
+    printf("Digite o valor da primeira venda: \n");
+    scanf("%f", &v1);
+    printf("Digite o valor da segunda venda: \n");
+    scanf("%f", &v2);
+    printf("Digite o valor da terceira venda: \n");
+    scanf("%f", &v3);
+    
+    med = (v1 + v2 + v3)/3;
+    bonus = (med * 0.1);
+    
+    printf("Matrícula: %i", mat);
+    printf("Média das Vendas: %f", med)
+    printf("Bônus de 10%: ", bonus)
+    
+  return 0;
+}
