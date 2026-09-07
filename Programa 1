@@ -1,8 +1,5 @@
 #include <stdio.h>
-#include <iostream>
-#include <cstdlib>
 
-using namespace std;
 
 int main(void)
 {
@@ -10,21 +7,23 @@ int main(void)
     float v1,v2,v3;
     float med,bonus;
     
-    printf("Digite a matrícula do vendedor: \n");
+    printf("Digite a matrícula do vendedor: ");
     scanf("%i", &mat);
-    printf("Digite o valor da primeira venda: \n");
+    printf("Digite o valor da primeira venda: ");
     scanf("%f", &v1);
-    printf("Digite o valor da segunda venda: \n");
+    printf("Digite o valor da segunda venda: ");
     scanf("%f", &v2);
-    printf("Digite o valor da terceira venda: \n");
+    printf("Digite o valor da terceira venda: ");
     scanf("%f", &v3);
     
     med = (v1 + v2 + v3)/3;
     bonus = (med * 0.1);
-    
-    printf("Matrícula: %i", mat);
-    printf("Média das Vendas: %f", med)
-    printf("Bônus de 10%: ", bonus)
+
+    printf("===================\n");
+    printf("Matrícula: %i\n", mat);
+    printf("Média das Vendas: %.2f\n", med);
+    printf("Bônus de 10%: %.2f\n", bonus);
+    printf("===================");
     
   return 0;
 }
