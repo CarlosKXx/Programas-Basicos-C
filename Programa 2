@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+
+int main(void)
+{
+	int mat,ano_i,ano_a;
+    float sal,sal_li,sal_b,bonus,ir;
+    
+    printf("Digite a matrícula do funcionário: ");
+    scanf("%i", &mat);
+    printf("Digite o salário do funcionário: ");
+    scanf("%f", &sal);
+    printf("Digite o ano de início do funcionário: ");
+    scanf("%i", &ano_i);
+    printf("Digite o ano atual: ");
+    scanf("%i", &ano_a);
+    
+    if (ano_a - ano_i <= 10) {
+        bonus = (sal * 0.1);
+    }
+    else if (ano_a - ano_i > 10) {
+        bonus = (sal * 0.2);
+    };
+
+    sal_b = (sal + bonus);
+    ir = (sal_b * 0.25);
+    sal_li = (sal_b - ir);
+
+    printf("===================\n");
+    printf("Matrícula: %i\n", mat);
+    printf("Ano de ínicio: %i\n", ano_i);
+    printf("Salário: %.2f\n", sal);
+    printf("Bônus: %.2f\n", bonus);
+    printf("Salário Bruto: %.2f\n", sal_b);
+    printf("Imposto de Renda: %.2f\n", ir);
+    printf("Salário Líquido: %.2f\n", sal_li);
+    printf("===================");
+    
+
+  return 0;
+}
