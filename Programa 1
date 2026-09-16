@@ -1,29 +1,38 @@
 #include <stdio.h>
-
-
-int main(void)
+int main()
 {
-	int mat;
     float v1,v2,v3;
-    float med,bonus;
-    
-    printf("Digite a matrícula do vendedor: ");
-    scanf("%i", &mat);
+    float total,media,bonus,premio;
+
     printf("Digite o valor da primeira venda: ");
     scanf("%f", &v1);
     printf("Digite o valor da segunda venda: ");
     scanf("%f", &v2);
-    printf("Digite o valor da terceira venda: ");
+    printf("Digite o valor da terceia venda: ");
     scanf("%f", &v3);
-    
-    med = (v1 + v2 + v3)/3;
-    bonus = (med * 0.1);
 
-    printf("===================\n");
-    printf("Matrícula: %i\n", mat);
-    printf("Média das Vendas: %.2f\n", med);
-    printf("Bônus de 10%: %.2f\n", bonus);
-    printf("===================");
-    
-  return 0;
+    total = (v1 + v2 + v3);
+    media = (total / 3);
+    bonus = (media * 0.1);
+
+    if (media > 5000) {
+        premio = 1000;
+    }
+    else {
+        premio = 0;
+    };
+    printf("====== RESULTADO DAS VENDAS =====\n");
+    printf("Primeira Venda: R$ %.2f\n", v1);
+    printf("Segunda Venda: R$ %.2f\n", v2);
+    printf("Terceira Venda: R$ %.2f\n", v3);
+    printf("Média das Vendas: R$ %.2f\n", media);
+    printf("Bônus Recebido: R$ %.2f\n", bonus);
+    if (premio == 0) {
+        printf("Prêmio Recebido: R$ %.2f\n", premio);
+        printf("Se dedique um pouco mais\n");
+    }
+    else {
+        printf("Prêmio Recebido: R$ %.2f\n", premio);
+    };
+    printf("===========================");
 }
