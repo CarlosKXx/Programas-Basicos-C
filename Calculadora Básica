@@ -1,0 +1,91 @@
+#include <stdio.h>
+ 
+int main()
+{
+    int num1, num2, result;
+    char op, op2, entrada;
+ 
+    entrada = 'S';
+ 
+    while (entrada != 'f' && entrada != 'F') {
+        if (entrada == '+' || entrada == '-' || entrada == '*' || entrada == '/') {
+            num1 = result;
+            op2 = entrada;
+            printf("Digite o segundo numero: ");
+            scanf("%i", &num2);
+            printf("Usando o resultado anterior: %i %c %i\n ", num1, op2, num2);
+        switch (op2) {
+            case '+':
+                result = num1 + num2;
+                break;
+ 
+            case '-':
+                result = num1 - num2;
+                break;
+ 
+            case '*':
+                result = num1 * num2;
+                break;
+ 
+            case '/':
+                if (num2 == 0) {
+                    printf("Erro: divisao por zero!\n");
+                    continue;
+                }
+                result = num1 / num2;
+                break;
+ 
+            default:
+                printf("Erro: operador invalido!\n");
+                continue;
+        }
+        }
+        else {
+            printf("\nDigite o primeiro numero: ");
+            scanf("%i", &num1);
+            printf("Digite o operador (+, -, *, /): ");
+        scanf(" %c", &op);
+ 
+        printf("Digite o segundo numero: ");
+        scanf("%i", &num2);
+ 
+        switch (op) {
+            case '+':
+                result = num1 + num2;
+                break;
+ 
+            case '-':
+                result = num1 - num2;
+                break;
+ 
+            case '*':
+                result = num1 * num2;
+                break;
+ 
+            case '/':
+                if (num2 == 0) {
+                    printf("Erro: divisao por zero!\n");
+                    continue;
+                }
+                result = num1 / num2;
+                break;
+ 
+            default:
+                printf("Erro: operador invalido!\n");
+                continue;
+        }
+ 
+       
+        }
+ 
+        printf("Resultado: %i\n", result);
+ 
+        printf("\nPara continuar o cálculo (+|-|*|/)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
+        scanf(" %c", &entrada);
+       
+    }
+ 
+    printf("Programa finalizado!\n");
+ 
+    return 0;
+}
