@@ -1,79 +1,72 @@
 #include <stdio.h>
- 
+
+int soma(int a, int b) {
+    return a + b;
+}
+int sub(int a, int b) {
+    return a - b;
+}
+int mult(int a, int b) {
+    return a * b;
+}
+int div(int a, int b) {
+    return a / b;
+}
+
 int main()
 {
-    int num1, num2, result;
-    char op, op2, entrada;
+    int num1, num2, result=0;
+    char op, entrada;
  
-    entrada = 'S';
+    entrada = 'C';
  
     while (entrada != 'f' && entrada != 'F') {
         if (entrada == '+' || entrada == '-' || entrada == '*' || entrada == '/') {
             num1 = result;
-            op2 = entrada;
+            op = entrada;
             printf("Digite o segundo numero: ");
             scanf("%i", &num2);
-            printf("Usando o resultado anterior: %i %c %i\n ", num1, op2, num2);
-        switch (op2) {
-            case '+':
-                result = num1 + num2;
-                break;
- 
-            case '-':
-                result = num1 - num2;
-                break;
- 
-            case '*':
-                result = num1 * num2;
-                break;
- 
-            case '/':
-                if (num2 == 0) {
-                    printf("Erro: divisao por zero!\n");
-                    continue;
-                }
-                result = num1 / num2;
-                break;
- 
-            default:
-                printf("Erro: operador invalido!\n");
-                continue;
+            printf("Usando o resultado anterior: %i %c %i\n ", num1, op, num2);
         }
-        }
-        else {
+        else if (entrada == 'c' || entrada == 'C') {
             printf("\nDigite o primeiro numero: ");
             scanf("%i", &num1);
             printf("Digite o operador (+, -, *, /): ");
-        scanf(" %c", &op);
- 
-        printf("Digite o segundo numero: ");
-        scanf("%i", &num2);
- 
+            scanf(" %c", &op);
+            printf("Digite o segundo numero: ");
+            scanf("%i", &num2);
+        }
+        else {
+            printf("\nErro: opção inválida!\n");
+            printf("\nPara continuar o cálculo (+|-|*|/)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
+            scanf(" %c", &entrada);
+            continue;
+        }
         switch (op) {
             case '+':
-                result = num1 + num2;
+                result = soma(num1, num2);
                 break;
  
             case '-':
-                result = num1 - num2;
+                result = sub(num1, num2);
                 break;
  
             case '*':
-                result = num1 * num2;
+                result = mult(num1, num2);
                 break;
  
             case '/':
                 if (num2 == 0) {
-                    printf("Erro: divisao por zero!\n");
-                    continue;
+                printf("Erro: divisao por zero!\n");
+                continue;
                 }
-                result = num1 / num2;
+                result = div(num1, num2);
                 break;
  
             default:
                 printf("Erro: operador invalido!\n");
                 continue;
-        }
+        
  
        
         }
