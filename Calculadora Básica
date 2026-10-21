@@ -24,17 +24,29 @@ int main()
         if (entrada == '+' || entrada == '-' || entrada == '*' || entrada == '/') {
             num1 = result;
             op = entrada;
-            printf("Digite o segundo numero: ");
-            scanf("%i", &num2);
+            printf("\nDigite o segundo numero: ");
+            if (scanf("%i", &num2) != 1) {
+                printf("\nErro: digite apenas números inteiros!\n");
+                while (getchar() != '\n');
+                continue;
+            }
             printf("Usando o resultado anterior: %i %c %i\n ", num1, op, num2);
         }
         else if (entrada == 'c' || entrada == 'C') {
             printf("\nDigite o primeiro numero: ");
-            scanf("%i", &num1);
+            if (scanf("%i", &num1) != 1) {
+                printf("\nErro: digite apenas números inteiros!\n");
+                while (getchar() != '\n');
+                continue;
+            }
             printf("Digite o operador (+, -, *, /): ");
             scanf(" %c", &op);
             printf("Digite o segundo numero: ");
-            scanf("%i", &num2);
+            if (scanf("%i", &num2) != 1) {
+                printf("Erro: digite apenas números inteiros!\n");
+                while (getchar() != '\n');
+                continue;
+            }
         }
         else {
             printf("\nErro: opção inválida!\n");
@@ -70,14 +82,10 @@ int main()
  
        
         }
- 
         printf("Resultado: %i\n", result);
- 
         printf("\nPara continuar o cálculo (+|-|*|/)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
-        scanf(" %c", &entrada);
-       
+        scanf(" %c", &entrada);   
     }
- 
     printf("Programa finalizado!\n");
  
     return 0;
