@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int calct(int a, float b[a]) {
+    int i;
+    int c;
+    for (i = 0; i < a; i++) {
+        c += b[i];
+    }
+    return c;
+}
+
+int main()
+{
+    int i, quantidade=0;
+    printf("Digite a quantidade de vendas: ");
+    scanf("%d", &quantidade);
+    float v[quantidade];
+    float total=0,media=0,bonus,premio;
+
+    for (i = 0; i < quantidade; i++) {
+        printf("Digite o valor da %d° venda: ", i+1);
+        scanf("%f", &v[i]);
+    }
+    printf("\n====== VENDAS INFORMADAS =====\n");
+    for (i = 0; i < quantidade; i++) {
+        printf("%d° Venda: R$ %.2f\n", i+1, v[i]);
+    }
+    printf("==============================\n");
+    total = calct(quantidade, v);
+    media = (total / quantidade);
+    bonus = (media * 0.1);
+
+    if (media > 5000) {
+        premio = 1000;
+    }
+    else {
+        premio = 0;
+    };
+    printf("\n====== RESULTADO DAS VENDAS =====\n");
+    printf("Total das Vendas: R$ %.2f\n", total);
+    printf("--------------------\n");
+    printf("Média das Vendas: R$ %.2f\n", media);
+    printf("--------------------\n");
+    printf("Bônus Recebido: R$ %.2f\n", bonus);
+    printf("--------------------\n");
+    if (premio == 0) {
+        printf("Prêmio Recebido: R$ %.2f\n", premio);
+        printf("Se dedique um pouco mais!\n");
+        printf("--------------------\n");
+    }
+    else {
+        printf("Prêmio Recebido: R$ %.2f\n", premio);
+        printf("Parabéns, continue assim!!!\n");
+        printf("--------------------\n");
+    };
+    printf("Total Recebido: R$ %.2f\n", total+bonus+premio);
+    printf("===============================");
+
+    return 0;
+}
