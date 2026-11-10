@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Funções básicas da calculadora para cada operação matemática
 int soma(int a, int b) {
     return a + b;
 }
@@ -13,47 +14,60 @@ int div(int a, int b) {
     return a / b;
 }
 
-int main()
-{
-    int num1, num2, result=0;
+int main() {
+    int num1, num2, result = 0;
     char op, entrada;
  
-    entrada = 'C';
- 
+    entrada = 'C'; // Começa como 'C' para forçar a entrada a pedir a primeira expressão
+    printf("\n======Calculadora======\n(Operadores: +, -, *, /)\n");
+
+    // Loop principal que mantém a calculadora rodando até que o usuário decida fechar (F)
     while (entrada != 'f' && entrada != 'F') {
+        
+        // Se a entrada for um operador, já lemos o operador e o número juntos (ex: "+ 5")
         if (entrada == '+' || entrada == '-' || entrada == '*' || entrada == '/') {
             num1 = result;
             op = entrada;
-            printf("\nDigite o segundo numero: ");
+            
+            // Lê o número digitado logo após o operador (ex: o "5" em "+ 5")
             if (scanf("%i", &num2) != 1) {
                 printf("\nErro: digite apenas números inteiros!\n");
                 while (getchar() != '\n');
+                // Pede nova entrada se falhar
+                printf("\nPara continuar (+|-|*|/) + num (ex: + 5)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
+                scanf(" %c", &entrada);
+                while (getchar() != '\n');
                 continue;
             }
-            printf("Usando o resultado anterior: %i %c %i\n ", num1, op, num2);
+            while (getchar() != '\n'); // Limpa a sobra da linha
+            printf("Usando o resultado anterior: %i %c %i\n", num1, op, num2);
         }
+        // Se a entrada for 'C', o usuário quer digitar uma nova expressão completa do zero
         else if (entrada == 'c' || entrada == 'C') {
-            printf("\nDigite o primeiro numero: ");
-            if (scanf("%i", &num1) != 1) {
-                printf("\nErro: digite apenas números inteiros!\n");
+            printf("\nDigite a expressão (ex: 10 + 5): ");
+            if (scanf("%i %c %i", &num1, &op, &num2) != 3) {
+                printf("\nErro: formato inválido! Use (número operador número).\n");
+                while (getchar() != '\n');
+                // Pede a entrada novamente para não quebrar o fluxo
+                printf("\nInsira (C para reiniciar ou F para fechar): ");
+                scanf(" %c", &entrada);
                 while (getchar() != '\n');
                 continue;
             }
-            printf("Digite o operador (+, -, *, /): ");
-            scanf(" %c", &op);
-            printf("Digite o segundo numero: ");
-            if (scanf("%i", &num2) != 1) {
-                printf("Erro: digite apenas números inteiros!\n");
-                while (getchar() != '\n');
-                continue;
-            }
+            while (getchar() != '\n'); // Limpa o buffer da linha inteira
         }
+        // Tratamento caso o usuário digite uma opção inválida no menu de escolha
         else {
             printf("\nErro: opção inválida!\n");
-            printf("\nPara continuar o cálculo (+|-|*|/)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
+            printf("\nPara continuar (+|-|*|/) (ex: + 5)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
             scanf(" %c", &entrada);
+            if (entrada != '+' && entrada != '-' && entrada != '*' && entrada != '/') {
+            while (getchar() != '\n'); 
+        }
             continue;
         }
+
+        // Estrutura de decisão para chamar a função correta baseada no operador escolhido
         switch (op) {
             case '+':
                 result = soma(num1, num2);
@@ -69,8 +83,15 @@ int main()
  
             case '/':
                 if (num2 == 0) {
-                printf("Erro: divisao por zero!\n");
-                continue;
+                    printf("Erro: divisao por zero!\n");
+                    // Pula para a pergunta de próximo passo sem perder o resultado anterior
+                    printf("\nResultado atual mantido: %i\n", result);
+                    printf("\nPara continuar (+|-|*|/) (ex: + 5)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
+                    scanf(" %c", &entrada);
+                    if (entrada != '+' && entrada != '-' && entrada != '*' && entrada != '/') {
+                         while (getchar() != '\n'); 
+                    }
+                    continue;
                 }
                 result = div(num1, num2);
                 break;
@@ -78,15 +99,17 @@ int main()
             default:
                 printf("Erro: operador invalido!\n");
                 continue;
-        
- 
-       
         }
+
+        // Mostra o resultado final da operação atual e pergunta o próximo passo
         printf("Resultado: %i\n", result);
-        printf("\nPara continuar o cálculo (+|-|*|/)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
-        scanf(" %c", &entrada);   
+        printf("\nPara continuar (+|-|*|/) (ex: + 5)\nPara limpar (C)\nPara fechar (F)\nInsira: ");
+        scanf(" %c", &entrada); 
+        if (entrada != '+' && entrada != '-' && entrada != '*' && entrada != '/') {
+            while (getchar() != '\n'); 
+        }
     }
+    
     printf("Programa finalizado!\n");
- 
     return 0;
 }
